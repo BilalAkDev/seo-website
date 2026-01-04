@@ -147,12 +147,13 @@
                 <div class="section-header">
                     <p class="section-tagline">Vår flotta</p>
                     <h2 id="fleet-title">Ikoniska fordon</h2>
-                    <p class="section-description">Handplockade för prestanda, komfort och stil</p>
+                    <p class="section-description">Klicka på ett fordon för mer information</p>
                 </div>
                 <div class="fleet-grid">
-                    <article class="fleet-card">
+                    <article class="fleet-card" onclick="openVehicleModal('tesla')" role="button" tabindex="0">
                         <div class="fleet-image">
-                            <img src="https://images.pexels.com/photos/12861929/pexels-photo-12861929.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tesla Model S" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80" alt="Tesla Model S Plaid" loading="lazy">
+                            <div class="fleet-overlay"><span>Visa detaljer</span></div>
                         </div>
                         <div class="fleet-info">
                             <span class="fleet-category">Electric</span>
@@ -160,9 +161,10 @@
                             <p>Plaid • 1,020 hk • 0-100 på 2.1s</p>
                         </div>
                     </article>
-                    <article class="fleet-card">
+                    <article class="fleet-card" onclick="openVehicleModal('porsche')" role="button" tabindex="0">
                         <div class="fleet-image">
-                            <img src="https://images.pexels.com/photos/3764984/pexels-photo-3764984.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Porsche 911" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80" alt="Porsche 911 Turbo S" loading="lazy">
+                            <div class="fleet-overlay"><span>Visa detaljer</span></div>
                         </div>
                         <div class="fleet-info">
                             <span class="fleet-category">Sports</span>
@@ -170,9 +172,10 @@
                             <p>Turbo S • 650 hk • Ikonisk design</p>
                         </div>
                     </article>
-                    <article class="fleet-card">
+                    <article class="fleet-card" onclick="openVehicleModal('mercedes')" role="button" tabindex="0">
                         <div class="fleet-image">
-                            <img src="https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mercedes AMG GT" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80" alt="Mercedes AMG GT" loading="lazy">
+                            <div class="fleet-overlay"><span>Visa detaljer</span></div>
                         </div>
                         <div class="fleet-info">
                             <span class="fleet-category">Luxury</span>
@@ -180,9 +183,10 @@
                             <p>63 S • 630 hk • Ren elegans</p>
                         </div>
                     </article>
-                    <article class="fleet-card">
+                    <article class="fleet-card" onclick="openVehicleModal('bmw')" role="button" tabindex="0">
                         <div class="fleet-image">
-                            <img src="https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&cs=tinysrgb&w=800" alt="BMW M8" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&q=80" alt="BMW M8 Competition" loading="lazy">
+                            <div class="fleet-overlay"><span>Visa detaljer</span></div>
                         </div>
                         <div class="fleet-info">
                             <span class="fleet-category">Grand Tourer</span>
@@ -359,8 +363,204 @@
         </div>
     </footer>
 
+    <!-- Vehicle Modal -->
+    <div id="vehicleModal" class="modal" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeVehicleModal()" aria-label="Stäng">&times;</button>
+            <div class="modal-grid">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-details">
+                    <span class="modal-category" id="modalCategory"></span>
+                    <h2 id="modalTitle"></h2>
+                    <p class="modal-tagline" id="modalTagline"></p>
+
+                    <div class="modal-specs">
+                        <div class="spec-group">
+                            <h4>Specifikationer</h4>
+                            <div class="specs-grid">
+                                <div class="spec">
+                                    <span class="spec-label">Motor</span>
+                                    <span class="spec-value" id="specMotor"></span>
+                                </div>
+                                <div class="spec">
+                                    <span class="spec-label">Effekt</span>
+                                    <span class="spec-value" id="specPower"></span>
+                                </div>
+                                <div class="spec">
+                                    <span class="spec-label">0-100 km/h</span>
+                                    <span class="spec-value" id="specAcceleration"></span>
+                                </div>
+                                <div class="spec">
+                                    <span class="spec-label">Toppfart</span>
+                                    <span class="spec-value" id="specTopSpeed"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spec-group">
+                            <h4>Fordonsinfo</h4>
+                            <div class="specs-grid">
+                                <div class="spec">
+                                    <span class="spec-label">Årsmodell</span>
+                                    <span class="spec-value" id="specYear"></span>
+                                </div>
+                                <div class="spec">
+                                    <span class="spec-label">Färg</span>
+                                    <span class="spec-value" id="specColor"></span>
+                                </div>
+                                <div class="spec">
+                                    <span class="spec-label">Mätarställning</span>
+                                    <span class="spec-value" id="specMileage"></span>
+                                </div>
+                                <div class="spec">
+                                    <span class="spec-label">Transmission</span>
+                                    <span class="spec-value" id="specTransmission"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spec-group">
+                            <h4>Utrustning</h4>
+                            <ul class="features-list" id="modalFeatures"></ul>
+                        </div>
+                    </div>
+
+                    <div class="modal-price">
+                        <span class="price-label">Från</span>
+                        <span class="price-value" id="modalPrice"></span>
+                        <span class="price-period">/dag</span>
+                    </div>
+
+                    <a href="#pricing" class="btn btn-primary btn-large" onclick="closeVehicleModal()">Boka denna bil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Stripe Checkout Script -->
     <script>
+        // Vehicle data
+        const vehicles = {
+            tesla: {
+                name: 'Tesla Model S Plaid',
+                category: 'Electric',
+                tagline: 'Framtidens prestanda, idag',
+                image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=1200&q=80',
+                motor: 'Tri Motor AWD',
+                power: '1,020 hk',
+                acceleration: '2.1 sek',
+                topSpeed: '322 km/h',
+                year: '2024',
+                color: 'Pearl White',
+                mileage: '8,450 km',
+                transmission: 'Automat',
+                price: '2,490',
+                features: ['Autopilot', 'Premium ljud', 'Panoramatak', 'Uppvärmda säten', '21" Arachnid-fälgar', 'Full självkörning (FSD)']
+            },
+            porsche: {
+                name: 'Porsche 911 Turbo S',
+                category: 'Sports',
+                tagline: 'Legenden lever vidare',
+                image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200&q=80',
+                motor: '3.8L Twin-Turbo Flat-6',
+                power: '650 hk',
+                acceleration: '2.7 sek',
+                topSpeed: '330 km/h',
+                year: '2023',
+                color: 'GT Silver Metallic',
+                mileage: '12,300 km',
+                transmission: '8-växlad PDK',
+                price: '3,990',
+                features: ['Sport Chrono', 'PASM-chassi', 'Keramiska bromsar', 'Sport Exhaust', 'Burmester ljud', 'Porsche Dynamic Chassis']
+            },
+            mercedes: {
+                name: 'Mercedes-AMG GT 63 S',
+                category: 'Luxury',
+                tagline: 'Kraft möter elegans',
+                image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1200&q=80',
+                motor: '4.0L V8 Biturbo',
+                power: '630 hk',
+                acceleration: '3.2 sek',
+                topSpeed: '315 km/h',
+                year: '2023',
+                color: 'Obsidian Black',
+                mileage: '15,800 km',
+                transmission: '9G-TRONIC',
+                price: '3,490',
+                features: ['AMG Performance 4MATIC+', 'AMG Ride Control', 'Burmester 3D Surround', 'Heads-up display', 'Night paket', 'Carbon interiör']
+            },
+            bmw: {
+                name: 'BMW M8 Competition',
+                category: 'Grand Tourer',
+                tagline: 'Ultimat körupplevelse',
+                image: 'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=1200&q=80',
+                motor: '4.4L V8 TwinPower Turbo',
+                power: '625 hk',
+                acceleration: '3.2 sek',
+                topSpeed: '305 km/h',
+                year: '2024',
+                color: 'Frozen Black',
+                mileage: '6,200 km',
+                transmission: '8-växlad M Steptronic',
+                price: '2,990',
+                features: ['M xDrive', 'Laserlights', 'Bowers & Wilkins', 'M Carbon tak', 'M Driver\'s Package', 'Individual Merino läder']
+            }
+        };
+
+        function openVehicleModal(vehicleId) {
+            const vehicle = vehicles[vehicleId];
+            if (!vehicle) return;
+
+            document.getElementById('modalImage').src = vehicle.image;
+            document.getElementById('modalImage').alt = vehicle.name;
+            document.getElementById('modalCategory').textContent = vehicle.category;
+            document.getElementById('modalTitle').textContent = vehicle.name;
+            document.getElementById('modalTagline').textContent = vehicle.tagline;
+            document.getElementById('specMotor').textContent = vehicle.motor;
+            document.getElementById('specPower').textContent = vehicle.power;
+            document.getElementById('specAcceleration').textContent = vehicle.acceleration;
+            document.getElementById('specTopSpeed').textContent = vehicle.topSpeed;
+            document.getElementById('specYear').textContent = vehicle.year;
+            document.getElementById('specColor').textContent = vehicle.color;
+            document.getElementById('specMileage').textContent = vehicle.mileage;
+            document.getElementById('specTransmission').textContent = vehicle.transmission;
+            document.getElementById('modalPrice').textContent = vehicle.price + ' kr';
+
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = vehicle.features.map(f => `<li>${f}</li>`).join('');
+
+            document.getElementById('vehicleModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVehicleModal() {
+            document.getElementById('vehicleModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOutside(event) {
+            if (event.target.id === 'vehicleModal') {
+                closeVehicleModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVehicleModal();
+        });
+
+        // Fleet card keyboard support
+        document.querySelectorAll('.fleet-card').forEach(card => {
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+
         document.querySelectorAll('.btn-buy').forEach(button => {
             button.addEventListener('click', async (e) => {
                 const packageType = e.target.dataset.package;
