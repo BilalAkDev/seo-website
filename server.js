@@ -20,8 +20,8 @@ const packages = {
   test: {
     name: 'Testpaket',
     duration: 'Test',
-    price: 1,
-    description: 'Testbetalning - 1 kr',
+    price: 5,
+    description: 'Testbetalning - 5 kr',
     features: [
       'Testar betalningssystemet'
     ]
@@ -97,7 +97,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
   try {
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
+      payment_method_types: ['card', 'klarna'],
       line_items: [
         {
           price_data: {
