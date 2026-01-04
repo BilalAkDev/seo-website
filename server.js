@@ -97,7 +97,9 @@ app.post('/create-checkout-session', async (req, res) => {
 
   try {
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card', 'klarna'],
+      // Stripe auto-detects best payment methods (Card, Apple Pay, Google Pay, Klarna, PayPal, etc.)
+      // Enable these in Stripe Dashboard > Settings > Payment Methods
+      payment_method_types: ['card', 'klarna', 'paypal'],
       line_items: [
         {
           price_data: {
