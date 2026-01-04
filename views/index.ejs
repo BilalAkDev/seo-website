@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags (SEO) -->
+    <title>SEO Expert | Professionell Sökmotoroptimering i Sverige</title>
+    <meta name="title" content="SEO Expert | Professionell Sökmotoroptimering i Sverige">
+    <meta name="description" content="Öka din synlighet online med professionell SEO. Vi hjälper svenska företag att ranka högre på Google. Boka din SEO-analys idag.">
+    <meta name="keywords" content="SEO, sökmotoroptimering, Google ranking, digital marknadsföring, SEO byrå Sverige">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SEO Expert">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://your-domain.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:title" content="SEO Expert | Professionell Sökmotoroptimering">
+    <meta property="og:description" content="Öka din synlighet online med professionell SEO. Vi hjälper svenska företag att ranka högre på Google.">
+    <meta property="og:image" content="https://your-domain.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/">
+    <meta property="twitter:title" content="SEO Expert | Professionell Sökmotoroptimering">
+    <meta property="twitter:description" content="Öka din synlighet online med professionell SEO. Vi hjälper svenska företag att ranka högre på Google.">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "SEO Expert",
+        "description": "Professionell sökmotoroptimering för svenska företag",
+        "url": "https://your-domain.com",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "SE"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "SEO Tjänster",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "name": "Starter SEO Package",
+                    "price": "2990",
+                    "priceCurrency": "SEK",
+                    "description": "Basic SEO audit with detailed report"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Growth SEO Package",
+                    "price": "5990",
+                    "priceCurrency": "SEK",
+                    "description": "Full audit with 3 months of support"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Enterprise SEO Package",
+                    "price": "14990",
+                    "priceCurrency": "SEK",
+                    "description": "Complete SEO overhaul with 6 months support"
+                }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="/" class="logo" aria-label="SEO Expert Home">SEO</a>
+            <ul class="nav-links">
+                <li><a href="#services">Tjänster</a></li>
+                <li><a href="#pricing">Priser</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title">Dominera sökresultaten</h1>
+                <p class="hero-subtitle">Professionell SEO som driver resultat. Vi hjälper svenska företag att synas på Google.</p>
+                <a href="#pricing" class="btn btn-primary">Se våra paket</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Nöjda kunder</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">85%</span>
+                    <span class="stat-label">Ökad trafik</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">#1</span>
+                    <span class="stat-label">Rankings</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services" aria-labelledby="services-title">
+            <div class="container">
+                <h2 id="services-title">Vad vi gör</h2>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <h3>Teknisk SEO</h3>
+                        <p>Vi optimerar din webbplats tekniska grund för snabbare laddningstider och bättre indexering.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3>On-Page SEO</h3>
+                        <p>Innehållsoptimering, meta-taggar och strukturerad data för maximalt synlighet.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3>Lokal SEO</h3>
+                        <p>Syns i lokala sökningar. Perfekt för företag med fysiska platser.</p>
+                    </article>
+                    <article class="service-card">
+                        <h3>Länkbyggande</h3>
+                        <p>Kvalitativa backlinks som stärker din domänauktoritet och ranking.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing" aria-labelledby="pricing-title">
+            <div class="container">
+                <h2 id="pricing-title">Välj ditt paket</h2>
+                <p class="pricing-subtitle">Alla priser är exklusive moms</p>
+
+                <div class="pricing-grid">
+                    <% Object.entries(packages).forEach(([key, pkg]) => { %>
+                    <article class="pricing-card <%= key === 'growth' ? 'featured' : '' %>">
+                        <% if (key === 'growth') { %>
+                        <span class="badge">Populärast</span>
+                        <% } %>
+                        <h3><%= pkg.name %></h3>
+                        <div class="price">
+                            <span class="amount"><%= pkg.price.toLocaleString('sv-SE') %></span>
+                            <span class="currency">SEK</span>
+                        </div>
+                        <p class="description"><%= pkg.description %></p>
+                        <ul class="features">
+                            <% pkg.features.forEach(feature => { %>
+                            <li><%= feature %></li>
+                            <% }); %>
+                        </ul>
+                        <button
+                            class="btn btn-primary btn-buy"
+                            data-package="<%= key %>"
+                            aria-label="Köp <%= pkg.name %> paketet"
+                        >
+                            Köp nu
+                        </button>
+                    </article>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title">Frågor?</h2>
+                <p>Kontakta oss för en kostnadsfri konsultation</p>
+                <a href="mailto:hello@seo-expert.se" class="btn btn-secondary">hello@seo-expert.se</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2024 SEO Expert. Alla rättigheter förbehållna.</p>
+        </div>
+    </footer>
+
+    <!-- Stripe Checkout Script -->
+    <script>
+        document.querySelectorAll('.btn-buy').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                const packageType = e.target.dataset.package;
+                button.disabled = true;
+                button.textContent = 'Laddar...';
+
+                try {
+                    const response = await fetch('/create-checkout-session', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ packageType }),
+                    });
+
+                    const { url, error } = await response.json();
+
+                    if (error) {
+                        alert('Något gick fel. Försök igen.');
+                        button.disabled = false;
+                        button.textContent = 'Köp nu';
+                        return;
+                    }
+
+                    window.location.href = url;
+                } catch (err) {
+                    alert('Något gick fel. Försök igen.');
+                    button.disabled = false;
+                    button.textContent = 'Köp nu';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
