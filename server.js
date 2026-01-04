@@ -15,45 +15,48 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// SEO Service Packages
+// DriveX Car Rental Packages
 const packages = {
-  starter: {
-    name: 'Starter',
-    price: 2990,
-    priceId: 'price_starter', // Replace with actual Stripe Price ID
-    description: 'Basic SEO audit with detailed report',
+  daily: {
+    name: 'Dagspaket',
+    duration: '24 timmar',
+    price: 1990,
+    description: 'Perfekt för en dag av lyx och äventyr',
     features: [
-      'Complete website audit',
-      'Keyword analysis',
-      'Competitor overview',
-      'PDF report delivery'
+      '24 timmars hyra',
+      '200 km inkluderat',
+      'Fullständig försäkring',
+      'Vägassistans 24/7',
+      'Flexibel avbokning'
     ]
   },
-  growth: {
-    name: 'Growth',
-    price: 5990,
-    priceId: 'price_growth', // Replace with actual Stripe Price ID
-    description: 'Full audit with 3 months of support',
+  weekend: {
+    name: 'Helgpaket',
+    duration: 'Fre-Sön',
+    price: 4990,
+    description: 'Tre dagar av frihet på vägen',
     features: [
-      'Everything in Starter',
-      'On-page optimization',
-      'Technical SEO fixes',
-      '3 months email support',
-      'Monthly progress reports'
+      'Fredag till söndag',
+      '600 km inkluderat',
+      'Fullständig försäkring',
+      'Vägassistans 24/7',
+      'Dörrleverans ingår',
+      'Gratis extra förare'
     ]
   },
-  enterprise: {
-    name: 'Enterprise',
-    price: 14990,
-    priceId: 'price_enterprise', // Replace with actual Stripe Price ID
-    description: 'Complete SEO overhaul with 6 months support',
+  weekly: {
+    name: 'Veckpaket',
+    duration: '7 dagar',
+    price: 9990,
+    description: 'En hel vecka av obegränsade möjligheter',
     features: [
-      'Everything in Growth',
-      'Content strategy',
-      'Link building campaign',
-      'Local SEO optimization',
-      '6 months dedicated support',
-      'Weekly strategy calls'
+      '7 dagars hyra',
+      'Obegränsade mil',
+      'Fullständig försäkring',
+      'Vägassistans 24/7',
+      'Dörrleverans ingår',
+      'Gratis extra förare',
+      'Personlig concierge'
     ]
   }
 };
@@ -91,7 +94,7 @@ app.post('/create-checkout-session', async (req, res) => {
           price_data: {
             currency: 'sek',
             product_data: {
-              name: `SEO ${selectedPackage.name} Package`,
+              name: `DriveX ${selectedPackage.name}`,
               description: selectedPackage.description,
             },
             unit_amount: selectedPackage.price * 100, // Stripe uses cents/öre
