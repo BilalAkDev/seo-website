@@ -6,7 +6,63 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+// Webhook endpoint needs raw body - must be before other middleware
+app.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+  const sig = req.headers['stripe-signature'];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+  } catch (err) {
+    console.error('Webhook signature verification failed:', err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  // Handle the event
+  switch (event.type) {
+    case 'checkout.session.completed':
+      const session = event.data.object;
+
+      // Get customer details
+      const customerEmail = session.customer_details?.email;
+      const customerName = session.customer_details?.name;
+      const amountPaid = session.amount_total / 100; // Convert from öre to SEK
+      const paymentStatus = session.payment_status;
+
+      console.log('=================================');
+      console.log('💰 NY BETALNING MOTTAGEN!');
+      console.log('=================================');
+      console.log(`Kund: ${customerName || 'Ej angivet'}`);
+      console.log(`Email: ${customerEmail || 'Ej angivet'}`);
+      console.log(`Belopp: ${amountPaid} SEK`);
+      console.log(`Status: ${paymentStatus}`);
+      console.log(`Session ID: ${session.id}`);
+      console.log(`Tid: ${new Date().toLocaleString('sv-SE')}`);
+      console.log('=================================');
+
+      // TODO: Här kan du lägga till:
+      // - Skicka bekräftelsemail till kunden
+      // - Skicka SMS till dig själv
+      // - Spara i databas
+      // - Uppdatera Google Sheets
+
+      break;
+
+    case 'payment_intent.payment_failed':
+      const failedPayment = event.data.object;
+      console.log('❌ Betalning misslyckades:', failedPayment.id);
+      break;
+
+    default:
+      console.log(`Unhandled event type: ${event.type}`);
+  }
+
+  res.json({ received: true });
+});
+
+// Regular middleware for other routes
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
