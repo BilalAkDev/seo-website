@@ -17,6 +17,15 @@ app.set('views', path.join(__dirname, 'views'));
 
 // DriveX Car Rental Packages
 const packages = {
+  test: {
+    name: 'Testpaket',
+    duration: 'Test',
+    price: 1,
+    description: 'Testbetalning - 1 kr',
+    features: [
+      'Testar betalningssystemet'
+    ]
+  },
   daily: {
     name: 'Dagspaket',
     duration: '24 timmar',
